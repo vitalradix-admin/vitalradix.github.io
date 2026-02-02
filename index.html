@@ -21,9 +21,10 @@
       background-color: var(--bg);
       color: var(--dark);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
     }
 
@@ -76,10 +77,52 @@
       height: 100%;
       fill: currentColor;
     }
+
+    /* Footer links */
+    .footer {
+      margin-top: 26px;
+      font-size: 0.9rem;
+      opacity: 0.75;
+    }
+
+    .footer a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Legal sections (hidden until clicked via #privacy or #terms) */
+    .legal {
+      display: none;
+      text-align: left;
+      max-width: 760px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      line-height: 1.6;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .legal h2 {
+      color: var(--green);
+      letter-spacing: 0.05em;
+      margin-top: 50px;
+    }
+
+    .legal h3 {
+      margin-top: 18px;
+    }
+
+    :target.legal {
+      display: block;
+    }
   </style>
 </head>
 
-<body>
+<body id="top">
   <div class="container">
 
     <!-- LOGO -->
@@ -121,6 +164,73 @@
       </a>
 
     </div>
+
+    <!-- FOOTER LINKS -->
+    <footer class="footer">
+      <a href="#privacy">Privacy Policy</a> •
+      <a href="#terms">Terms</a> •
+      <a href="mailto:hello@vitalradix.com">Contact</a>
+    </footer>
+
   </div>
+
+  <!-- PRIVACY POLICY (hidden until #privacy) -->
+  <section id="privacy" class="legal">
+    <h2>Privacy Policy</h2>
+    <p><strong>Last updated:</strong> February 2, 2026</p>
+
+    <h3>1. Information We Collect</h3>
+    <p>We may collect personal information you voluntarily provide (such as your email address), transaction information related to purchases, and basic technical information (such as browser type and device). We do not knowingly collect sensitive personal information.</p>
+
+    <h3>2. How We Use Your Information</h3>
+    <p>We use information to deliver digital products, communicate with you about purchases or requested content, improve our services, and comply with legal obligations.</p>
+
+    <h3>3. Email Communications</h3>
+    <p>If you provide your email, you consent to receive communications related to your purchase or content you requested. You may unsubscribe at any time.</p>
+
+    <h3>4. Sharing of Information</h3>
+    <p>We do not sell your personal data. We may share information with payment processors (such as Stripe) and service providers necessary to operate the Site, or with legal authorities if required by law.</p>
+
+    <h3>5. Cookies &amp; Tracking</h3>
+    <p>We may use basic cookies or analytics tools to improve user experience. We do not use invasive tracking.</p>
+
+    <h3>6. Data Security</h3>
+    <p>We take reasonable measures to protect your information, but no system is completely secure. Use of the Site is at your own risk.</p>
+
+    <h3>7. Your Rights</h3>
+    <p>Depending on your location, you may have rights under applicable data protection laws (such as GDPR), including the right to access, update, or delete your personal information.</p>
+
+    <h3>8. Children’s Information</h3>
+    <p>This Site is not intended for individuals under 18. We do not knowingly collect data from children.</p>
+
+    <h3>9. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy periodically. Continued use of the Site constitutes acceptance of those changes.</p>
+
+    <h3>10. Contact</h3>
+    <p>For privacy-related questions, contact: <a href="mailto:support@vitalradix.com">support@vitalradix.com</a>.</p>
+
+    <p><a href="#top">Back to top ↑</a></p>
+  </section>
+
+  <!-- TERMS (hidden until #terms) -->
+  <section id="terms" class="legal">
+    <h2>Terms &amp; Conditions</h2>
+    <p><strong>Last updated:</strong> February 2, 2026</p>
+
+    <h3>Acceptance</h3>
+    <p>By accessing or using this Site, you agree to these Terms &amp; Conditions. If you do not agree, please do not use the Site.</p>
+
+    <h3>Digital Products &amp; Refunds</h3>
+    <p>Products are digital unless otherwise stated. Due to the digital nature of these products, all sales are final once access or delivery occurs. Refunds may be issued only in the event of non-delivery caused by a technical error attributable to Vital Radix.</p>
+
+    <h3>No Medical Advice</h3>
+    <p>The content provided is for informational and educational purposes only and is not intended as medical advice, diagnosis, or treatment. Consult a qualified healthcare professional before making changes to your routine or using any products discussed.</p>
+
+    <h3>Contact</h3>
+    <p>Questions about these Terms: <a href="mailto:support@vitalradix.com">support@vitalradix.com</a>.</p>
+
+    <p><a href="#top">Back to top ↑</a></p>
+  </section>
+
 </body>
 </html>
