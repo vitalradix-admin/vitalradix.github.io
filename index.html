@@ -48,7 +48,7 @@
       background: var(--ink);
       color: var(--cream);
       font-family: var(--sans);
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -94,8 +94,7 @@
       width: 36px;
       height: 36px;
       object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: 0.92;
+      opacity: 0.9;
     }
     .nav-logo span {
       font-family: var(--serif);
@@ -115,7 +114,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(250,247,242,0.7);
+      color: rgba(250,247,242,0.88);
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--cream); }
@@ -227,7 +226,7 @@
     .hero-sub {
       font-family: var(--serif);
       font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-      font-weight: 300;
+      font-weight: 400;
       font-style: italic;
       color: rgba(200,220,203,0.75);
       max-width: 560px;
@@ -307,6 +306,7 @@
       border-top: 1px solid rgba(255,255,255,0.05);
       border-bottom: 1px solid rgba(255,255,255,0.05);
       padding: 20px 48px;
+      overflow: hidden;
     }
     .trust-inner {
       max-width: 1100px;
@@ -314,17 +314,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
+      gap: 32px;
+      flex-wrap: nowrap;
     }
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
+      gap: 8px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(200,220,203,0.5);
+      white-space: nowrap;
     }
     .trust-icon {
       width: 16px;
@@ -401,10 +402,11 @@
       width: 180px;
       height: 180px;
       object-fit: contain;
-      opacity: 0.18;
-      filter: grayscale(1) brightness(3);
+      opacity: 0.07;
+      filter: grayscale(1) brightness(4);
       position: relative;
       z-index: 1;
+      mix-blend-mode: screen;
     }
     /* Orbit dots */
     .orbit-dot {
@@ -432,7 +434,7 @@
     .problem-body {
       font-size: 0.95rem;
       line-height: 1.8;
-      color: rgba(200,220,203,0.65);
+      color: rgba(200,220,203,0.85);
       margin-bottom: 20px;
     }
     .problem-quote {
@@ -468,7 +470,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(200,220,203,0.45);
+      color: rgba(200,220,203,0.75);
       line-height: 1.4;
     }
 
@@ -498,7 +500,7 @@
       font-family: var(--serif);
       font-size: 1.05rem;
       font-style: italic;
-      color: rgba(200,220,203,0.6);
+      color: rgba(200,220,203,0.82);
       line-height: 1.6;
     }
     .method-steps {
@@ -532,7 +534,7 @@
     }
     .method-step-body {
       font-size: 0.88rem;
-      color: rgba(200,220,203,0.55);
+      color: rgba(200,220,203,0.82);
       line-height: 1.75;
     }
     .method-step-tag {
@@ -609,7 +611,7 @@
     }
     .product-desc {
       font-size: 0.9rem;
-      color: rgba(200,220,203,0.6);
+      color: rgba(200,220,203,0.85);
       line-height: 1.75;
       margin-bottom: 32px;
     }
@@ -622,7 +624,7 @@
       align-items: flex-start;
       gap: 12px;
       font-size: 0.85rem;
-      color: rgba(200,220,203,0.7);
+      color: rgba(200,220,203,0.9);
       padding: 9px 0;
       border-bottom: 1px solid rgba(255,255,255,0.05);
       line-height: 1.5;
@@ -673,11 +675,11 @@
     }
     .btn-product-primary:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-1px); }
     .btn-product-secondary {
-      background: transparent;
-      border: 1px solid rgba(184,149,90,0.55);
-      color: var(--gold-light);
+      background: var(--gold);
+      color: var(--ink);
+      border: 1px solid var(--gold);
     }
-    .btn-product-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+    .btn-product-secondary:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-1px); }
     .product-badge {
       display: flex;
       gap: 12px;
@@ -845,7 +847,7 @@
     .philosophy-heading em { font-style: italic; color: var(--fern); }
     .philosophy-body {
       font-size: 0.93rem;
-      color: rgba(200,220,203,0.62);
+      color: rgba(200,220,203,0.85);
       line-height: 1.85;
       margin-bottom: 20px;
     }
@@ -1529,7 +1531,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="nav-logo">
-            <img src="logo.png" alt="Vital Radix" style="width:30px;height:30px;filter:brightness(0) invert(1);opacity:0.7;" />
+            <img src="logo.png" alt="Vital Radix" style="width:30px;height:30px;opacity:0.7;" />
             <span style="font-family:var(--serif);font-size:1rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,247,242,0.7);">Vital Radix</span>
           </div>
           <p>Rooted in simplicity, grounded in nature. Helping people restore biological rhythm through foundational daily practice.</p>
