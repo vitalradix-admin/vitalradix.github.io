@@ -2,278 +2,1673 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Vital Radix — Coming Soon</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vital Radix — Rooted health. Modern vitality." />
+  <title>Vital Radix — Restore Your Sleep. Reclaim Your Energy.</title>
+  <meta name="description" content="Your sleep isn't broken — your rhythm is misaligned. Vital Radix offers science-backed circadian reset protocols rooted in nature. No supplements. No hacks. Just rhythm." />
+  <meta name="theme-color" content="#0e1a10" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vital Radix — Restore Your Sleep. Reclaim Your Energy." />
+  <meta property="og:description" content="Your sleep isn't broken — your rhythm is misaligned. Science-backed protocols rooted in nature." />
+  <meta property="og:image" content="https://www.vitalradix.com/logo.png" />
+  <meta property="og:url" content="https://www.vitalradix.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
     :root {
-      --green: #1f5c3a;
-      --dark: #1e1e1e;
-      --bg: #ffffff;
+      --ink:        #0e1a10;
+      --ink-mid:    #1c2e1e;
+      --forest:     #1a3d22;
+      --moss:       #2d5c35;
+      --sage:       #4a7c54;
+      --fern:       #6ba373;
+      --mist:       #c8dccb;
+      --parchment:  #f5f0e8;
+      --cream:      #faf7f2;
+      --gold:       #b8955a;
+      --gold-light: #d4b07a;
+      --white:      #ffffff;
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Jost', system-ui, sans-serif;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
-      margin: 0;
-      padding: 0;
-      font-family: Georgia, serif;
-      background-color: var(--bg);
-      color: var(--dark);
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── NOISE TEXTURE OVERLAY ──────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      transition: background 0.4s ease, padding 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(14, 26, 16, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 14px 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+    .nav-logo span {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.7);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(184,149,90,0.5);
+      color: var(--gold-light);
+      padding: 9px 20px;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      text-transform: uppercase;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+    .nav-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .nav-burger span { display: block; width: 22px; height: 1px; background: var(--cream); transition: all 0.3s; }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+
+    /* Radial botanical glow */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(ellipse at center,
+        rgba(45, 92, 53, 0.35) 0%,
+        rgba(26, 61, 34, 0.18) 40%,
+        transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Root-system SVG background */
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1000px;
+      height: 55%;
+      background: url('logo.png') center bottom / contain no-repeat;
+      opacity: 0.04;
+      pointer-events: none;
+      filter: grayscale(1) brightness(3);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.2s forwards;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '—';
+      margin: 0 10px;
+      opacity: 0.5;
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.35s forwards;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--fern);
+    }
+    .hero-headline .accent-line {
+      display: block;
+      font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+      color: var(--mist);
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(200,220,203,0.75);
+      max-width: 560px;
+      margin: 28px auto 48px;
+      line-height: 1.65;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.5s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.65s forwards;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(200,220,203,0.3);
+      color: var(--mist);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      border-radius: 2px;
+      transition: border-color 0.25s, color 0.25s, transform 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--mist); color: var(--cream); transform: translateY(-1px); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.2s forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,220,203,0.4);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(200,220,203,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    .container {
-      max-width: 420px;
-      padding: 24px;
+    /* ─── TRUST BAR ──────────────────────────────────────────── */
+    #trust {
+      background: var(--ink-mid);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 20px 48px;
     }
-
-    img {
-      max-width: 220px;
-      margin-bottom: 28px;
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      letter-spacing: 0.14em;
-      margin: 0 0 10px;
-      color: var(--green);
-      font-weight: normal;
-    }
-
-    .tagline {
-      font-style: italic;
-      margin: 6px 0 24px;
-      opacity: 0.85;
-    }
-
-    /* Stan Store section */
-    .stan {
-      margin: 14px 0 22px;
-      padding: 14px 14px 16px;
-      border: 1px solid rgba(31, 92, 58, 0.25);
-      border-radius: 10px;
-      background: rgba(31, 92, 58, 0.04);
-    }
-
-    .stan p {
-      margin: 0 0 10px;
-      font-size: 0.98rem;
-      opacity: 0.9;
-    }
-
-    .stan a.btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: var(--green);
-      color: #fff;
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      font-size: 0.92rem;
-      transition: opacity 0.2s ease, transform 0.06s ease;
-    }
-
-    .stan a.btn:hover {
-      opacity: 0.85;
-    }
-
-    .stan a.btn:active {
-      transform: translateY(1px);
-    }
-
-    .socials {
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
-      gap: 18px;
-    }
-
-    .socials a {
-      width: 28px;
-      height: 28px;
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #1f5c3a;
-      transition: opacity 0.2s ease;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(200,220,203,0.5);
+    }
+    .trust-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .trust-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.08);
     }
 
-    .socials a:hover {
-      opacity: 0.65;
+    /* ─── SECTION SHARED ─────────────────────────────────────── */
+    section { position: relative; }
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── PROBLEM SECTION ────────────────────────────────────── */
+    #problem {
+      padding: 120px 48px;
+      background: var(--ink);
+    }
+    .problem-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .problem-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .problem-ring {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(74,124,84,0.2);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .problem-ring::before {
+      content: '';
+      position: absolute;
+      inset: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(74,124,84,0.12);
+    }
+    .problem-ring::after {
+      content: '';
+      position: absolute;
+      inset: 48px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(26,61,34,0.6) 0%, transparent 70%);
+    }
+    .problem-ring-logo {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      opacity: 0.18;
+      filter: grayscale(1) brightness(3);
+      position: relative;
+      z-index: 1;
+    }
+    /* Orbit dots */
+    .orbit-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .orbit-dot:nth-child(1) { top: -3px; left: 50%; transform: translateX(-50%); }
+    .orbit-dot:nth-child(2) { bottom: -3px; left: 50%; transform: translateX(-50%); opacity: 0.3; }
+    .orbit-dot:nth-child(3) { left: -3px; top: 50%; transform: translateY(-50%); opacity: 0.15; }
+    .orbit-dot:nth-child(4) { right: -3px; top: 50%; transform: translateY(-50%); opacity: 0.5; }
+
+    .problem-text .section-label { display: block; }
+    .problem-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--cream);
+      margin-bottom: 28px;
+    }
+    .problem-heading em { font-style: italic; color: var(--fern); }
+    .problem-body {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(200,220,203,0.65);
+      margin-bottom: 20px;
+    }
+    .problem-quote {
+      margin: 36px 0;
+      padding: 24px 28px;
+      border-left: 2px solid var(--gold);
+      background: rgba(184,149,90,0.06);
+    }
+    .problem-quote p {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.55;
+    }
+    .problem-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .stat-item { text-align: left; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(200,220,203,0.45);
+      line-height: 1.4;
     }
 
-    .socials svg {
+    /* ─── HOW IT WORKS ───────────────────────────────────────── */
+    #method {
+      padding: 120px 48px;
+      background: var(--ink-mid);
+    }
+    .method-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .method-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 80px;
+    }
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: rgba(200,220,203,0.6);
+      line-height: 1.6;
+    }
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .method-step {
+      background: rgba(14,26,16,0.5);
+      padding: 48px 40px;
+      border: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      transition: background 0.3s;
+    }
+    .method-step:hover { background: rgba(26,61,34,0.35); }
+    .method-step-num {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(74,124,84,0.2);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .method-step-title {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .method-step-body {
+      font-size: 0.88rem;
+      color: rgba(200,220,203,0.55);
+      line-height: 1.75;
+    }
+    .method-step-tag {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184,149,90,0.3);
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    /* ─── PRODUCTS ───────────────────────────────────────────── */
+    #products {
+      padding: 120px 48px;
+      background: var(--ink);
+    }
+    .products-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .products-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 70px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .product-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 52px 48px;
+      position: relative;
+      background: rgba(28,46,30,0.2);
+      transition: border-color 0.3s;
+    }
+    .product-card:hover { border-color: rgba(184,149,90,0.3); }
+    .product-card.featured {
+      background: rgba(26,61,34,0.4);
+      border-color: rgba(184,149,90,0.25);
+    }
+    .product-tag {
+      position: absolute;
+      top: -1px;
+      right: 32px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+    }
+    .product-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .product-name {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .product-desc {
+      font-size: 0.9rem;
+      color: rgba(200,220,203,0.6);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .product-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+    .product-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: rgba(200,220,203,0.7);
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      line-height: 1.5;
+    }
+    .product-features li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .product-price {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .product-price-note {
+      font-size: 0.78rem;
+      color: rgba(200,220,203,0.45);
+      letter-spacing: 0.05em;
+    }
+    .btn-product {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 16px 24px;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .btn-product-primary {
+      background: var(--gold);
+      color: var(--ink);
+      border: 1px solid var(--gold);
+    }
+    .btn-product-primary:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-1px); }
+    .btn-product-secondary {
+      background: transparent;
+      border: 1px solid rgba(184,149,90,0.55);
+      color: var(--gold-light);
+    }
+    .btn-product-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+    .product-badge {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(200,220,203,0.35);
+    }
+    .badge-item svg { width: 12px; height: 12px; color: var(--sage); }
+
+    /* ─── EMAIL CAPTURE ──────────────────────────────────────── */
+    #capture {
+      padding: 100px 48px;
+      background: var(--forest);
+      position: relative;
+      overflow: hidden;
+    }
+    #capture::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(ellipse, rgba(14,26,16,0.6) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .capture-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .capture-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .capture-heading em { font-style: italic; color: var(--mist); }
+    .capture-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(200,220,203,0.7);
+      margin-bottom: 10px;
+    }
+    .capture-offer {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 40px;
+    }
+    .capture-form {
+      display: flex;
+      gap: 0;
+      max-width: 460px;
+      margin: 0 auto 16px;
+    }
+    .capture-form input {
+      flex: 1;
+      background: rgba(14,26,16,0.7);
+      border: 1px solid rgba(200,220,203,0.2);
+      border-right: none;
+      padding: 16px 20px;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .capture-form input::placeholder { color: rgba(200,220,203,0.3); }
+    .capture-form input:focus { border-color: rgba(184,149,90,0.5); }
+    .capture-form button {
+      background: var(--gold);
+      color: var(--ink);
+      border: none;
+      padding: 16px 28px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+      border-radius: 0;
+      white-space: nowrap;
+    }
+    .capture-form button:hover { background: var(--gold-light); }
+    .capture-disclaimer {
+      font-size: 0.72rem;
+      color: rgba(200,220,203,0.3);
+      letter-spacing: 0.04em;
+    }
+    /* Success state */
+    .capture-success {
+      display: none;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--mist);
+      padding: 20px;
+    }
+
+    /* ─── PHILOSOPHY ─────────────────────────────────────────── */
+    #philosophy {
+      padding: 120px 48px;
+      background: var(--ink);
+    }
+    .philosophy-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .philosophy-visual {
+      position: relative;
+    }
+    .philosophy-logo-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .philosophy-logo-wrap img {
       width: 100%;
       height: 100%;
-      fill: currentColor;
+      object-fit: contain;
+      opacity: 0.85;
+      filter: sepia(0.3) brightness(0.9);
+    }
+    .philosophy-glow {
+      position: absolute;
+      inset: 10%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(45,92,53,0.3), transparent 70%);
+      pointer-events: none;
+    }
+    .philosophy-text .section-label { display: block; }
+    .philosophy-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 28px;
+    }
+    .philosophy-heading em { font-style: italic; color: var(--fern); }
+    .philosophy-body {
+      font-size: 0.93rem;
+      color: rgba(200,220,203,0.62);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .philosophy-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 40px;
+    }
+    .pillar {
+      background: rgba(28,46,30,0.3);
+      padding: 22px 24px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .pillar-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .pillar-desc {
+      font-size: 0.78rem;
+      color: rgba(200,220,203,0.45);
+      line-height: 1.55;
     }
 
-    /* Footer links */
-    .footer {
-      margin-top: 26px;
-      font-size: 0.9rem;
-      opacity: 0.75;
+    /* ─── TESTIMONIAL ────────────────────────────────────────── */
+    #social-proof {
+      padding: 100px 48px;
+      background: var(--ink-mid);
+    }
+    .proof-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .proof-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.45;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .proof-quote::before {
+      content: '\201C';
+      font-size: 6rem;
+      color: rgba(74,124,84,0.15);
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--serif);
+      line-height: 1;
+    }
+    .proof-author {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,220,203,0.4);
+    }
+    .proof-stars {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+    .proof-stars span {
+      color: var(--gold);
+      font-size: 1rem;
     }
 
-    .footer a {
-      color: var(--green);
-      text-decoration: none;
+    /* ─── FINAL CTA ──────────────────────────────────────────── */
+    #final-cta {
+      padding: 140px 48px;
+      background: var(--ink);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-
-    .footer a:hover {
-      text-decoration: underline;
+    #final-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(ellipse, rgba(26,61,34,0.25) 0%, transparent 65%);
+      pointer-events: none;
     }
-
-    /* Legal sections (hidden until clicked via #privacy or #terms) */
-    .legal {
-      display: none;
-      text-align: left;
-      max-width: 760px;
-      margin: 40px auto 80px;
-      padding: 0 20px;
+    #final-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 80%;
+      background: url('logo.png') center bottom / contain no-repeat;
+      opacity: 0.025;
+      filter: grayscale(1) brightness(3);
+      pointer-events: none;
+    }
+    .final-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .final-cta-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .final-cta-heading em { font-style: italic; color: var(--fern); }
+    .final-cta-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(200,220,203,0.6);
+      margin-bottom: 48px;
       line-height: 1.6;
-      width: 100%;
-      box-sizing: border-box;
+    }
+    .final-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .legal h2 {
-      color: var(--green);
-      letter-spacing: 0.05em;
-      margin-top: 50px;
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: #080f09;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 60px 48px 36px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 32px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 18px; }
+    .footer-brand p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: rgba(200,220,203,0.4);
+      line-height: 1.65;
+      max-width: 260px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .footer-socials a {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2px;
+      color: rgba(200,220,203,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-socials a:hover { color: var(--cream); border-color: rgba(184,149,90,0.4); }
+    .footer-socials svg { width: 14px; height: 14px; fill: currentColor; }
+    .footer-col-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(200,220,203,0.35);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(200,220,203,0.5);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--cream); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(200,220,203,0.25);
+      letter-spacing: 0.06em;
+    }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-size: 0.72rem;
+      color: rgba(200,220,203,0.25);
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: rgba(200,220,203,0.6); }
+
+    /* ─── LEGAL SECTIONS ─────────────────────────────────────── */
+    .legal-section {
+      display: none;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      text-align: left;
+    }
+    .legal-section h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .legal-section .updated {
+      font-size: 0.78rem;
+      color: rgba(200,220,203,0.35);
+      letter-spacing: 0.08em;
+      margin-bottom: 36px;
+    }
+    .legal-section h3 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 28px 0 10px;
+    }
+    .legal-section p {
+      font-size: 0.9rem;
+      color: rgba(200,220,203,0.6);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .legal-section a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .back-link {
+      display: inline-block;
+      margin-top: 36px;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(200,220,203,0.4);
+      border-bottom: 1px solid rgba(200,220,203,0.15);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--cream); }
+    :target.legal-section { display: block; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 0.8; transform: scaleY(1.2); }
     }
 
-    .legal h3 {
-      margin-top: 18px;
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(14,26,16,0.97);
+        backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        z-index: 99;
+      }
+      .nav-links.open a { font-size: 1rem; }
+      .nav-burger { display: flex; z-index: 100; }
+      #hero { padding: 100px 24px 80px; }
+      .problem-inner { grid-template-columns: 1fr; gap: 48px; }
+      .problem-ring { width: 280px; height: 280px; }
+      .problem-ring-logo { width: 130px; height: 130px; }
+      .method-steps { grid-template-columns: 1fr; gap: 2px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .philosophy-inner { grid-template-columns: 1fr; gap: 48px; }
+      .philosophy-logo-wrap { max-width: 300px; }
+      #problem, #method, #products, #philosophy, #social-proof, #final-cta { padding: 80px 24px; }
+      #capture { padding: 80px 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      footer { padding: 48px 24px 28px; }
+      .trust-inner { gap: 28px; }
+      .trust-divider { display: none; }
+      .problem-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .capture-form { flex-direction: column; }
+      .capture-form input { border-right: 1px solid rgba(200,220,203,0.2); border-bottom: none; }
+      .philosophy-pillars { grid-template-columns: 1fr; }
     }
 
-    :target.legal {
-      display: block;
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-ghost { text-align: center; justify-content: center; }
+      .product-card { padding: 36px 28px; }
+      .problem-stats { grid-template-columns: 1fr; }
+      .final-cta-actions { flex-direction: column; align-items: stretch; }
     }
   </style>
 </head>
 
 <body id="top">
-  <div class="container">
 
-    <!-- LOGO -->
-    <img src="logo.png" alt="Vital Radix logo" />
-
-    <!-- BRAND -->
-    <p class="tagline">Foundation | Vitality | Longevity | Rooted in Life</p>
-    <h1>COMING SOON!</h1>
-
-    <!-- STAN STORE (NEW) -->
-    <div class="stan" aria-label="Stan Store link">
-      <p>Available now: current resources and downloads on Stan Store.</p>
-      <a class="btn" href="https://stan.store/VitalRadix" target="_blank" rel="noopener">
-        Visit Stan Store →
-      </a>
+  <!-- ─── NAV ──────────────────────────────────────────────────── -->
+  <nav id="nav">
+    <a href="#top" class="nav-logo">
+      <img src="logo.png" alt="Vital Radix" />
+      <span>Vital Radix</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#method">The Method</a></li>
+      <li><a href="#products">Guides</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="https://stan.store/VitalRadix" target="_blank" rel="noopener" class="nav-cta">Shop Now</a></li>
+    </ul>
+    <div class="nav-burger" id="nav-burger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
     </div>
+  </nav>
 
-    <!-- SOCIAL ICONS -->
-    <div class="socials">
-
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/@vitalradix" aria-label="TikTok" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24">
-          <path d="M16.7 5.3c1.1 1.2 2.5 1.9 4 2v4.1c-1.5 0-3-.4-4.3-1.1v6.5c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v4.2c-.4-.1-.8-.2-1.2-.2-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2V2h4.1c.1 1.2.5 2.3 1.2 3.3z"/>
-        </svg>
-      </a>
-
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/vitalradix" aria-label="Instagram" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24">
-          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/>
-        </svg>
-      </a>
-
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/vitalradix" aria-label="Facebook" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24">
-          <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.8c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
-        </svg>
-      </a>
-
-      <!-- Email -->
-      <a href="mailto:hello@vitalradix.com" aria-label="Email">
-        <svg viewBox="0 0 24 24">
-          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-      </a>
-
+  <!-- ─── HERO ──────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Vital Radix</span>
+      <h1 class="hero-headline">
+        Your sleep isn't<br><em>broken.</em>
+        <span class="accent-line">Your rhythm is misaligned.</span>
+      </h1>
+      <p class="hero-sub">
+        Modern life has quietly disrupted the biological signals your body depends on.
+        We restore them — through light, movement, darkness, and rest.
+      </p>
+      <div class="hero-actions">
+        <a href="https://stan.store/VitalRadix" target="_blank" rel="noopener" class="btn-primary">
+          Start for $2.99
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#method" class="btn-ghost">See the method</a>
+      </div>
     </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
-    <!-- FOOTER LINKS -->
-    <footer class="footer">
-      <a href="#privacy">Privacy Policy</a> •
-      <a href="#terms">Terms</a> •
-      <a href="mailto:hello@vitalradix.com">Contact</a>
-    </footer>
-
+  <!-- ─── TRUST BAR ─────────────────────────────────────────────── -->
+  <div id="trust">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+        </svg>
+        No Supplements
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+        </svg>
+        Science-Backed
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636"/>
+        </svg>
+        Rooted in Nature
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+        </svg>
+        30-Day Practice
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+        </svg>
+        Proven Results
+      </div>
+    </div>
   </div>
 
-  <!-- PRIVACY POLICY (hidden until #privacy) -->
-  <section id="privacy" class="legal">
-    <h2>Privacy Policy</h2>
-    <p><strong>Last updated:</strong> February 2, 2026</p>
+  <!-- ─── PROBLEM ───────────────────────────────────────────────── -->
+  <section id="problem">
+    <div class="problem-inner">
+      <div class="problem-visual reveal">
+        <div class="problem-ring">
+          <div class="orbit-dot"></div>
+          <div class="orbit-dot"></div>
+          <div class="orbit-dot"></div>
+          <div class="orbit-dot"></div>
+          <img class="problem-ring-logo" src="logo.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+      <div class="problem-text reveal">
+        <span class="section-label">The Root Cause</span>
+        <h2 class="problem-heading">
+          You live in<br><em>permanent daylight.</em>
+        </h2>
+        <p class="problem-body">
+          Overhead lights, screens, and devices have quietly cut you off from the natural signals
+          your body needs to sleep properly. Your brain thinks it's still daytime at 10pm —
+          so it stays alert, delays tiredness, and keeps you staring at the ceiling.
+        </p>
+        <p class="problem-body">
+          This isn't a sleep disorder. It's a mismatch between your modern environment and
+          your ancient biology — and it's entirely fixable through small daily changes that cost nothing.
+        </p>
+        <div class="problem-quote">
+          <p>"You don't have a sleep disorder.<br>You have a light disorder."</p>
+        </div>
+        <div class="problem-stats">
+          <div class="stat-item">
+            <div class="stat-num">14–16</div>
+            <div class="stat-label">Hours after morning sun exposure, your brain triggers natural sleepiness</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">20×</div>
+            <div class="stat-label">More light signal outdoors than in a typical indoor room</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">7 nights</div>
+            <div class="stat-label">To feel a measurable difference in sleep quality and daytime energy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ─── METHOD ────────────────────────────────────────────────── -->
+  <section id="method">
+    <div class="method-inner">
+      <div class="method-header reveal">
+        <span class="section-label">The Method</span>
+        <h2 class="section-heading">Rhythm before remedies</h2>
+        <p class="section-sub">Three daily anchors that restore what modern life has quietly taken away.</p>
+      </div>
+      <div class="method-steps">
+        <div class="method-step reveal">
+          <div class="method-step-num">01</div>
+          <h3 class="method-step-title">The Morning Reset</h3>
+          <p class="method-step-body">The first light your brain sees each morning sets your internal clock for the entire day. Natural sunlight within the first hour of waking tells your body it's time to be alert — and quietly schedules your sleepiness for 14–16 hours later. Most of us skip this and start the day with a screen instead.</p>
+          <span class="method-step-tag">Light + Hydration</span>
+        </div>
+        <div class="method-step reveal" style="transition-delay:0.1s">
+          <div class="method-step-num">02</div>
+          <h3 class="method-step-title">The Midday Reset</h3>
+          <p class="method-step-body">Ten to twenty minutes of gentle movement — a short walk, a few stretches — keeps your energy stable through the afternoon. It prevents the mid-day crash that sends most people reaching for another coffee. A minute or two of slow, deep breathing through the nose helps your body shift from "go mode" into calm, focused clarity.</p>
+          <span class="method-step-tag">Movement + Breath</span>
+        </div>
+        <div class="method-step reveal" style="transition-delay:0.2s">
+          <div class="method-step-num">03</div>
+          <h3 class="method-step-title">The Evening Reset</h3>
+          <p class="method-step-body">Your brain needs darkness to produce melatonin — the hormone that makes you sleepy. Bright overhead lights and screens after sunset trick your brain into thinking it's still daytime, suppressing that signal entirely. Dimming your environment one hour before bed is one of the most impactful things you can do for deep, restorative sleep.</p>
+          <span class="method-step-tag">Darkness + Wind-Down</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUCTS ──────────────────────────────────────────────── -->
+  <section id="products">
+    <div class="products-inner">
+      <div class="products-header reveal">
+        <span class="section-label">The Guides</span>
+        <h2 class="section-heading">Pick where you want to start</h2>
+        <p class="section-sub">Both are simple to follow. No prior knowledge needed. No supplements. No equipment.</p>
+      </div>
+      <div class="products-grid reveal">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+          <span class="product-eyebrow">Start Here</span>
+          <h3 class="product-name">The Foundation<br>Reset Quick Guide</h3>
+          <p class="product-desc">A simple daily structure to help you wake up with more energy, sleep more soundly, and feel clearer throughout the day — using nothing but small changes to how you use light and movement.</p>
+          <ul class="product-features">
+            <li>Morning, Midday & Evening Reset routines — easy to follow</li>
+            <li>30-day daily checklist to build the habit in under 5 minutes a day</li>
+            <li>Plain-English explanations of why each step actually works</li>
+            <li>Instant digital download — start reading in seconds</li>
+          </ul>
+          <div class="product-price-row">
+            <span class="product-price">$2.99</span>
+            <span class="product-price-note">One-time · Instant access</span>
+          </div>
+          <a href="https://stan.store/VitalRadix" target="_blank" rel="noopener" class="btn-product btn-product-secondary">Get the Quick Guide</a>
+          <div class="product-badge">
+            <span class="badge-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              PDF Download
+            </span>
+            <span class="badge-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              No supplements
+            </span>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card featured">
+          <div class="product-tag">Most Complete</div>
+          <span class="product-eyebrow">The Full System</span>
+          <h3 class="product-name">The Vital Radix<br>Sleep Reset System</h3>
+          <p class="product-desc">A complete 7-night program to restore deep, natural sleep. No pills, no gadgets, no complicated routines — just a step-by-step plan that works with your body's own design.</p>
+          <ul class="product-features">
+            <li>Full 7-night sleep restoration program, night by night</li>
+            <li>Understand what's actually happening while you sleep — and why it matters</li>
+            <li>When to have your last coffee, dim your lights, and wind down — all mapped out</li>
+            <li>Calming practices to quiet your mind and body before bed</li>
+            <li>How to time natural sleepiness without relying on melatonin pills</li>
+            <li>Instant digital download · Read on any device</li>
+          </ul>
+          <div class="product-price-row">
+            <span class="product-price">$29</span>
+            <span class="product-price-note">One-time · Instant access</span>
+          </div>
+          <a href="https://stan.store/VitalRadix" target="_blank" rel="noopener" class="btn-product btn-product-primary">Get the Sleep Reset System</a>
+          <div class="product-badge">
+            <span class="badge-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+              PDF Download
+            </span>
+            <span class="badge-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              No supplements
+            </span>
+            <span class="badge-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+              Science-backed
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EMAIL CAPTURE ─────────────────────────────────────────── -->
+  <section id="capture">
+    <div class="capture-inner">
+      <div class="reveal">
+        <h2 class="capture-heading">
+          Start your reset<br><em>tonight.</em>
+        </h2>
+        <p class="capture-sub">Get the free Sleep Quick-Start — one page, three simple steps, start tonight.</p>
+        <span class="capture-offer">— Free instant download · No card required —</span>
+        <div class="capture-form" id="capture-form">
+          <input type="email" id="email-input" placeholder="Your email address" autocomplete="email" />
+          <button type="button" onclick="handleCapture()">Send It</button>
+        </div>
+        <div class="capture-success" id="capture-success">
+          Check your inbox — your reset starts tonight.
+        </div>
+        <p class="capture-disclaimer">No spam. Unsubscribe anytime. We respect your inbox.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PHILOSOPHY ────────────────────────────────────────────── -->
+  <section id="philosophy">
+    <div class="philosophy-inner">
+      <div class="philosophy-visual reveal">
+        <div class="philosophy-logo-wrap">
+          <div class="philosophy-glow"></div>
+          <img src="logo.png" alt="Vital Radix — Rooted in nature" />
+        </div>
+      </div>
+      <div class="philosophy-text reveal">
+        <span class="section-label">Our Philosophy</span>
+        <h2 class="philosophy-heading">
+          Rooted in simplicity.<br><em>Grounded in nature.</em>
+        </h2>
+        <p class="philosophy-body">
+          Lasting wellness is built on rhythm, not intensity. We don't sell optimization stacks
+          or complicated routines. We teach the simple daily habits your body has always needed —
+          the ones that modern life has quietly taken away.
+        </p>
+        <p class="philosophy-body">
+          Humans evolved outside. Sunlight in the morning. Movement through the day. Darkness
+          at night. When we bring those basics back, energy stabilizes and sleep improves —
+          naturally, without effort.
+        </p>
+        <div class="philosophy-pillars">
+          <div class="pillar">
+            <div class="pillar-name">Foundation</div>
+            <div class="pillar-desc">Small daily habits that create lasting change — not willpower, just repetition.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-name">Vitality</div>
+            <div class="pillar-desc">Steady all-day energy, without relying on caffeine or quick fixes.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-name">Longevity</div>
+            <div class="pillar-desc">Health that compounds over time through simple, consistent practice.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-name">Nature</div>
+            <div class="pillar-desc">Your body already knows what it needs. We help you get out of its way.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SOCIAL PROOF ──────────────────────────────────────────── -->
+  <section id="social-proof">
+    <div class="proof-inner reveal">
+      <div class="proof-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="proof-quote">
+        Within four days my sleep shifted. I stopped waking at 3am.
+        I didn't change anything except my light habits in the morning and evening.
+      </p>
+      <p class="proof-author">— Early Reader · The Sleep Reset System</p>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ──────────────────────────────────────────────── -->
+  <section id="final-cta">
+    <div class="final-cta-inner reveal">
+      <h2 class="final-cta-heading">
+        Your body already knows<br>how to <em>sleep.</em>
+      </h2>
+      <p class="final-cta-sub">
+        It just needs the right signals. Start with the Foundation Reset for $2.99 —
+        or go deep with the complete Sleep Reset System.
+      </p>
+      <div class="final-cta-actions">
+        <a href="https://stan.store/VitalRadix" target="_blank" rel="noopener" class="btn-primary">
+          Begin Your Reset
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#capture" class="btn-ghost">Get the free guide first</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <img src="logo.png" alt="Vital Radix" style="width:30px;height:30px;filter:brightness(0) invert(1);opacity:0.7;" />
+            <span style="font-family:var(--serif);font-size:1rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,247,242,0.7);">Vital Radix</span>
+          </div>
+          <p>Rooted in simplicity, grounded in nature. Helping people restore biological rhythm through foundational daily practice.</p>
+          <div class="footer-socials">
+            <a href="https://www.tiktok.com/@vitalradix" aria-label="TikTok" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M16.7 5.3c1.1 1.2 2.5 1.9 4 2v4.1c-1.5 0-3-.4-4.3-1.1v6.5c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v4.2c-.4-.1-.8-.2-1.2-.2-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2V2h4.1c.1 1.2.5 2.3 1.2 3.3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/vitalradix" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@VitalRadix" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.4 2.8 12 2.8 12 2.8s-4.4 0-6.8.2c-.6 0-1.9 0-3 1.2C1.3 5 1 7 1 7S.7 9.3.7 11.5v2.1c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.3 22.2 12 22.2 12 22.2s4.4 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.2.3-4.4v-2.1C23.3 9.3 23 7 23 7zM9.7 15.5V8.3l8.1 3.6-8.1 3.6z"/></svg>
+            </a>
+            <a href="mailto:hello@vitalradix.com" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">Protocols</p>
+          <ul class="footer-links">
+            <li><a href="https://stan.store/VitalRadix" target="_blank" rel="noopener">Foundation Reset Quick Guide</a></li>
+            <li><a href="https://stan.store/VitalRadix" target="_blank" rel="noopener">Sleep Reset System</a></li>
+            <li><a href="https://stan.store/VitalRadix" target="_blank" rel="noopener">Stan Store</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Company</p>
+          <ul class="footer-links">
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#method">The Method</a></li>
+            <li><a href="mailto:hello@vitalradix.com">Contact</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Vital Radix. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="mailto:hello@vitalradix.com">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── LEGAL ──────────────────────────────────────────────────── -->
+  <section id="privacy" class="legal-section">
+    <h2>Privacy Policy</h2>
+    <p class="updated">Last updated: February 2, 2026</p>
     <h3>1. Information We Collect</h3>
     <p>We may collect personal information you voluntarily provide (such as your email address), transaction information related to purchases, and basic technical information (such as browser type and device). We do not knowingly collect sensitive personal information.</p>
-
     <h3>2. How We Use Your Information</h3>
     <p>We use information to deliver digital products, communicate with you about purchases or requested content, improve our services, and comply with legal obligations.</p>
-
     <h3>3. Email Communications</h3>
     <p>If you provide your email, you consent to receive communications related to your purchase or content you requested. You may unsubscribe at any time.</p>
-
     <h3>4. Sharing of Information</h3>
     <p>We do not sell your personal data. We may share information with payment processors (such as Stripe) and service providers necessary to operate the Site, or with legal authorities if required by law.</p>
-
     <h3>5. Cookies &amp; Tracking</h3>
     <p>We may use basic cookies or analytics tools to improve user experience. We do not use invasive tracking.</p>
-
     <h3>6. Data Security</h3>
     <p>We take reasonable measures to protect your information, but no system is completely secure. Use of the Site is at your own risk.</p>
-
     <h3>7. Your Rights</h3>
     <p>Depending on your location, you may have rights under applicable data protection laws (such as GDPR), including the right to access, update, or delete your personal information.</p>
-
-    <h3>8. Children’s Information</h3>
+    <h3>8. Children's Information</h3>
     <p>This Site is not intended for individuals under 18. We do not knowingly collect data from children.</p>
-
     <h3>9. Changes to This Policy</h3>
     <p>We may update this Privacy Policy periodically. Continued use of the Site constitutes acceptance of those changes.</p>
-
     <h3>10. Contact</h3>
-    <p>For privacy-related questions, contact: <a href="mailto:support@vitalradix.com">support@vitalradix.com</a>.</p>
-
-    <p><a href="#top">Back to top ↑</a></p>
+    <p>For privacy-related questions, contact: <a href="mailto:support@vitalradix.com">support@vitalradix.com</a></p>
+    <a href="#top" class="back-link">↑ Back to top</a>
   </section>
 
-  <!-- TERMS (hidden until #terms) -->
-  <section id="terms" class="legal">
+  <section id="terms" class="legal-section">
     <h2>Terms &amp; Conditions</h2>
-    <p><strong>Last updated:</strong> February 2, 2026</p>
-
+    <p class="updated">Last updated: February 2, 2026</p>
     <h3>Acceptance</h3>
     <p>By accessing or using this Site, you agree to these Terms &amp; Conditions. If you do not agree, please do not use the Site.</p>
-
     <h3>Digital Products &amp; Refunds</h3>
     <p>Products are digital unless otherwise stated. Due to the digital nature of these products, all sales are final once access or delivery occurs. Refunds may be issued only in the event of non-delivery caused by a technical error attributable to Vital Radix.</p>
-
     <h3>No Medical Advice</h3>
     <p>The content provided is for informational and educational purposes only and is not intended as medical advice, diagnosis, or treatment. Consult a qualified healthcare professional before making changes to your routine or using any products discussed.</p>
-
     <h3>Contact</h3>
-    <p>Questions about these Terms: <a href="mailto:support@vitalradix.com">support@vitalradix.com</a>.</p>
-
-    <p><a href="#top">Back to top ↑</a></p>
+    <p>Questions about these Terms: <a href="mailto:support@vitalradix.com">support@vitalradix.com</a></p>
+    <a href="#top" class="back-link">↑ Back to top</a>
   </section>
+
+  <!-- ─── SCRIPTS ────────────────────────────────────────────────── -->
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Mobile menu
+    const burger = document.getElementById('nav-burger');
+    const navLinks = document.getElementById('nav-links');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Email capture
+    function handleCapture() {
+      const email = document.getElementById('email-input').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('email-input').style.borderColor = 'rgba(184,149,90,0.7)';
+        return;
+      }
+      document.getElementById('capture-form').style.display = 'none';
+      document.getElementById('capture-success').style.display = 'block';
+      // TODO: Connect to your email provider (Mailchimp, ConvertKit, etc.)
+      // fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) })
+    }
+    document.getElementById('email-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleCapture();
+    });
+  </script>
 
 </body>
 </html>
