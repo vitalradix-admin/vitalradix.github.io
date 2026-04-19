@@ -418,15 +418,17 @@
     .manifesto-sidebar-rule {
       width: 1px;
       height: 80px;
-      background: var(--rule-2);
+      background: var(--gold-3);
       margin: 20px 0;
+      opacity: 0.4;
     }
     .manifesto-aside-text {
-      font-size: 0.78rem;
-      color: var(--ink-4);
-      line-height: 1.7;
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      line-height: 1.75;
       font-style: italic;
       font-family: var(--serif);
+      font-weight: 400;
     }
     .manifesto-body h2 {
       font-family: var(--serif);
@@ -485,7 +487,7 @@
     .science-photo {
       background:
         linear-gradient(to right, rgba(15,22,12,0.15), rgba(15,22,12,0)),
-        url('https://images.unsplash.com/photo-1729958546582-1e28e7730dbc?w=900&q=82&auto=format&fit=crop') center / cover no-repeat;
+        url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=82&auto=format&fit=crop&crop=left') center / cover no-repeat;
       min-height: 500px;
     }
     .science-content {
@@ -1196,7 +1198,7 @@
 ══════════════════════════════ -->
 <nav id="nav" class="nav-hero">
   <a href="#top" class="nav-logo">
-    <img src="logo.png" alt="Vital Radix" id="nav-logo-img" />
+    <img src="logo_tree_white.png" alt="Vital Radix" id="nav-logo-img" />
     <span class="nav-wordmark">Vital Radix</span>
   </a>
   <ul class="nav-links" id="nav-links">
@@ -1442,7 +1444,7 @@
     <div class="philosophy-visual-col reveal">
       <div class="philosophy-img-frame">
         <div class="philosophy-logo-display">
-          <img src="logo.png" alt="Vital Radix — Rooted in nature" />
+          <img src="logo_tree_only.png" alt="Vital Radix — Rooted in nature" />
         </div>
       </div>
       <p class="philosophy-caption">Vital Radix — rooted in simplicity, grounded in nature. Helping people restore biological rhythm through foundational daily practice.</p>
@@ -1512,7 +1514,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo-row">
-          <img src="logo_white.png" alt="Vital Radix" />
+          <img src="logo_tree_white.png" alt="Vital Radix" style="opacity:0.45;" />
           <span>Vital Radix</span>
         </div>
         <p class="footer-tagline">Rooted in simplicity, grounded in nature.</p>
@@ -1600,15 +1602,15 @@
     if (window.scrollY > 80) {
       nav.classList.add('scrolled');
       nav.classList.remove('nav-hero');
-      navLogoImg.src = 'logo.png';
+      navLogoImg.src = 'logo_tree_only.png';
     } else {
       nav.classList.remove('scrolled');
       nav.classList.add('nav-hero');
-      navLogoImg.src = 'logo_white.png';
+      navLogoImg.src = 'logo_tree_white.png';
     }
   }, { passive: true });
   // Set white logo on initial load
-  navLogoImg.src = 'logo_white.png';
+  navLogoImg.src = 'logo_tree_white.png';
 
   const burger = document.getElementById('nav-burger');
   const navLinks = document.getElementById('nav-links');
