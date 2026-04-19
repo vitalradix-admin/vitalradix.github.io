@@ -91,11 +91,10 @@
       gap: 12px;
     }
     .nav-logo img {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       object-fit: contain;
-      opacity: 1;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+      opacity: 0.95;
     }
     .nav-logo span {
       font-family: var(--serif);
@@ -164,7 +163,7 @@
       pointer-events: none;
     }
 
-    /* Root-system SVG background */
+    /* Root-system background watermark */
     #hero::after {
       content: '';
       position: absolute;
@@ -175,9 +174,8 @@
       max-width: 1000px;
       height: 55%;
       background: url('logo.png') center bottom / contain no-repeat;
-      opacity: 0.04;
+      opacity: 0.06;
       pointer-events: none;
-      filter: grayscale(1) brightness(3);
     }
 
     .hero-inner {
@@ -400,11 +398,10 @@
       background: radial-gradient(ellipse, rgba(26,61,34,0.6) 0%, transparent 70%);
     }
     .problem-ring-logo {
-      width: 200px;
-      height: 200px;
+      width: 190px;
+      height: 190px;
       object-fit: contain;
-      opacity: 0.15;
-      filter: brightness(1.8) saturate(0.4);
+      opacity: 0.12;
       position: relative;
       z-index: 1;
     }
@@ -807,32 +804,53 @@
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
       align-items: center;
     }
     .philosophy-visual {
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .philosophy-logo-wrap {
       position: relative;
-      width: 100%;
-      aspect-ratio: 1;
-      max-width: 420px;
-      margin: 0 auto;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Decorative rings */
+    .philosophy-logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(184,149,90,0.15);
+    }
+    .philosophy-logo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      border: 1px solid rgba(74,124,84,0.12);
+      background: radial-gradient(ellipse, rgba(26,61,34,0.5) 0%, transparent 70%);
     }
     .philosophy-logo-wrap img {
-      width: 100%;
-      height: 100%;
+      width: 220px;
+      height: 220px;
       object-fit: contain;
-      opacity: 1;
-      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.5));
     }
     .philosophy-glow {
       position: absolute;
-      inset: 10%;
+      inset: -20px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(45,92,53,0.3), transparent 70%);
+      background: radial-gradient(ellipse, rgba(45,92,53,0.2), transparent 65%);
       pointer-events: none;
     }
     .philosophy-text .section-label { display: block; }
@@ -952,7 +970,6 @@
       height: 80%;
       background: url('logo.png') center bottom / contain no-repeat;
       opacity: 0.025;
-      filter: grayscale(1) brightness(3);
       pointer-events: none;
     }
     .final-cta-inner {
