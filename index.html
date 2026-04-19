@@ -441,17 +441,29 @@
       color: var(--moss);
     }
     .manifesto-body p {
-      font-size: 1.05rem;
-      color: var(--ink-3);
-      line-height: 1.9;
+      font-size: 1.08rem;
+      color: var(--ink-2);
+      line-height: 1.88;
       margin-bottom: 20px;
-      font-weight: 300;
+      font-weight: 400;
     }
     .manifesto-callout {
       margin-top: 40px;
-      padding: 28px 32px;
+      padding: 28px 32px 28px 32px;
       border-left: 2px solid var(--gold-3);
-      background: rgba(122,92,46,0.04);
+      background: rgba(122,92,46,0.05);
+      position: relative;
+    }
+    .manifesto-callout::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px;
+      left: 24px;
+      font-family: var(--serif);
+      font-size: 5rem;
+      color: rgba(122,92,46,0.12);
+      line-height: 1;
+      font-weight: 300;
     }
     .manifesto-callout p {
       font-family: var(--serif);
@@ -473,7 +485,7 @@
     .science-photo {
       background:
         linear-gradient(to right, rgba(15,22,12,0.15), rgba(15,22,12,0)),
-        url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80&auto=format&fit=crop') center / cover no-repeat;
+        url('https://images.unsplash.com/photo-1729958546582-1e28e7730dbc?w=900&q=82&auto=format&fit=crop') center / cover no-repeat;
       min-height: 500px;
     }
     .science-content {
@@ -535,10 +547,11 @@
       font-size: clamp(2.8rem, 5vw, 4.2rem);
     }
     .method-top-right p {
-      font-size: 1.02rem;
-      color: var(--ink-3);
+      font-size: 1.05rem;
+      color: var(--ink-2);
       line-height: 1.85;
       max-width: 480px;
+      font-weight: 400;
     }
     .method-steps {
       display: grid;
@@ -861,11 +874,12 @@
     .philosophy-caption {
       margin-top: 28px;
       font-family: var(--serif);
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       font-style: italic;
-      color: var(--ink-4);
-      line-height: 1.6;
+      color: var(--ink-3);
+      line-height: 1.7;
       padding-left: 2px;
+      font-weight: 400;
     }
     .philosophy-text .display-heading {
       font-size: clamp(2rem, 3.5vw, 2.9rem);
@@ -1182,7 +1196,7 @@
 ══════════════════════════════ -->
 <nav id="nav" class="nav-hero">
   <a href="#top" class="nav-logo">
-    <img src="logo.png" alt="Vital Radix" />
+    <img src="logo.png" alt="Vital Radix" id="nav-logo-img" />
     <span class="nav-wordmark">Vital Radix</span>
   </a>
   <ul class="nav-links" id="nav-links">
@@ -1272,7 +1286,7 @@
      SCIENCE SPLIT
 ══════════════════════════════ -->
 <section id="science">
-  <div class="science-photo" role="img" aria-label="Misty forest at dawn"></div>
+  <div class="science-photo" role="img" aria-label="Misty forest path at dawn — the clear path forward"></div>
   <div class="science-content">
     <div class="reveal">
       <span class="eyebrow">The Science</span>
@@ -1498,7 +1512,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo-row">
-          <img src="logo.png" alt="Vital Radix" />
+          <img src="logo_white.png" alt="Vital Radix" />
           <span>Vital Radix</span>
         </div>
         <p class="footer-tagline">Rooted in simplicity, grounded in nature.</p>
@@ -1581,15 +1595,20 @@
 <!-- SCRIPTS -->
 <script>
   const nav = document.getElementById('nav');
+  const navLogoImg = document.getElementById('nav-logo-img');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 80) {
       nav.classList.add('scrolled');
       nav.classList.remove('nav-hero');
+      navLogoImg.src = 'logo.png';
     } else {
       nav.classList.remove('scrolled');
       nav.classList.add('nav-hero');
+      navLogoImg.src = 'logo_white.png';
     }
   }, { passive: true });
+  // Set white logo on initial load
+  navLogoImg.src = 'logo_white.png';
 
   const burger = document.getElementById('nav-burger');
   const navLinks = document.getElementById('nav-links');
