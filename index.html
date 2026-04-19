@@ -97,13 +97,7 @@
       gap: 11px;
       z-index: 1;
     }
-    .nav-logo img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      transition: transform 0.3s var(--ease);
-    }
-    .nav-logo:hover img { transform: scale(1.04); }
+
     .nav-wordmark {
       font-family: var(--serif);
       font-size: 1.05rem;
@@ -487,7 +481,7 @@
     .science-photo {
       background:
         linear-gradient(to right, rgba(15,22,12,0.15), rgba(15,22,12,0)),
-        url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=82&auto=format&fit=crop&crop=left') center / cover no-repeat;
+        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=900&q=82&auto=format&fit=crop') center / cover no-repeat;
       min-height: 500px;
     }
     .science-content {
@@ -1198,7 +1192,6 @@
 ══════════════════════════════ -->
 <nav id="nav" class="nav-hero">
   <a href="#top" class="nav-logo">
-    <img src="logo_tree_white.png" alt="Vital Radix" id="nav-logo-img" />
     <span class="nav-wordmark">Vital Radix</span>
   </a>
   <ul class="nav-links" id="nav-links">
@@ -1444,7 +1437,7 @@
     <div class="philosophy-visual-col reveal">
       <div class="philosophy-img-frame">
         <div class="philosophy-logo-display">
-          <img src="logo_tree_only.png" alt="Vital Radix — Rooted in nature" />
+          <img src="logo.png" alt="Vital Radix — Rooted in nature" />
         </div>
       </div>
       <p class="philosophy-caption">Vital Radix — rooted in simplicity, grounded in nature. Helping people restore biological rhythm through foundational daily practice.</p>
@@ -1514,7 +1507,6 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo-row">
-          <img src="logo_tree_white.png" alt="Vital Radix" style="opacity:0.45;" />
           <span>Vital Radix</span>
         </div>
         <p class="footer-tagline">Rooted in simplicity, grounded in nature.</p>
@@ -1597,20 +1589,15 @@
 <!-- SCRIPTS -->
 <script>
   const nav = document.getElementById('nav');
-  const navLogoImg = document.getElementById('nav-logo-img');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 80) {
       nav.classList.add('scrolled');
       nav.classList.remove('nav-hero');
-      navLogoImg.src = 'logo_tree_only.png';
     } else {
       nav.classList.remove('scrolled');
       nav.classList.add('nav-hero');
-      navLogoImg.src = 'logo_tree_white.png';
     }
   }, { passive: true });
-  // Set white logo on initial load
-  navLogoImg.src = 'logo_tree_white.png';
 
   const burger = document.getElementById('nav-burger');
   const navLinks = document.getElementById('nav-links');
