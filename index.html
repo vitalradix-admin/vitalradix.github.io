@@ -16,6 +16,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Pinterest Save Button -->
+  <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 
   <style>
     :root {
@@ -47,6 +49,14 @@
     body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); opacity: 1; pointer-events: none; z-index: 9000; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+
+    /* Pinterest save button styling */
+    .pin-btn-wrap { position: absolute; top: 16px; right: 16px; z-index: 10; opacity: 0; transition: opacity 0.2s; }
+    .pin-btn-wrap a { display: inline-flex; align-items: center; gap: 6px; background: #E60023; color: #fff; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; padding: 6px 12px; border-radius: 2px; text-transform: uppercase; }
+    .pin-btn-wrap a svg { width: 12px; height: 12px; fill: #fff; }
+    .product-card:hover .pin-btn-wrap,
+    #hero:hover .pin-btn-wrap { opacity: 1; }
+    .product-card { position: relative; }
 
     nav { position: fixed; inset: 0 0 auto; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 72px; transition: background 0.5s var(--ease), height 0.3s var(--ease), border-color 0.5s; border-bottom: 1px solid transparent; }
     nav.scrolled { background: rgba(240,235,224,0.96); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); height: 60px; border-color: var(--rule); }
@@ -258,6 +268,7 @@
       footer { padding: 52px 24px 32px; }
       .trust-item { padding: 0 28px; }
       .science-stats { grid-template-columns: 1fr 1fr; }
+      .pin-btn-wrap { opacity: 1; }
     }
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; width: 100%; }
@@ -288,6 +299,17 @@
 
 <section id="hero">
   <div class="hero-photo" aria-hidden="true"></div>
+  <!-- Pinterest save button — hero -->
+  <div class="pin-btn-wrap" style="top:88px;">
+    <a href="//www.pinterest.com/pin/create/button/"
+       data-pin-do="buttonBookmark"
+       data-pin-url="https://www.vitalradix.com"
+       data-pin-media="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=85&auto=format&fit=crop"
+       data-pin-description="Your sleep isn't broken — your rhythm is misaligned. Restore natural sleep with simple daily habits. No supplements, no trackers. vitalradix.com">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      Save
+    </a>
+  </div>
   <div class="hero-content">
     <div class="hero-kicker">
       <div class="hero-kicker-line"></div>
@@ -410,6 +432,17 @@
     <div class="products-grid reveal" style="transition-delay:0.1s">
 
       <div class="product-card">
+        <!-- Pinterest save button — Foundation Reset -->
+        <div class="pin-btn-wrap">
+          <a href="//www.pinterest.com/pin/create/button/"
+             data-pin-do="buttonBookmark"
+             data-pin-url="https://stan.store/VitalRadix/p/the-foundation-reset"
+             data-pin-media="https://www.vitalradix.com/logo.png"
+             data-pin-description="The Foundation Reset Quick Guide — a simple daily structure to restore sleep, energy, and clarity. No supplements. No trackers. Just rhythm. $2.99 at vitalradix.com">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Save
+          </a>
+        </div>
         <span class="product-label">Start Here</span>
         <h3 class="product-name">The Foundation Reset Quick Guide</h3>
         <p class="product-desc">A simple daily structure to help you wake up with more energy, sleep more soundly, and feel clearer throughout the day — using nothing but small changes to how you use light and movement.</p>
@@ -431,6 +464,17 @@
       </div>
 
       <div class="product-card featured">
+        <!-- Pinterest save button — Sleep Reset System -->
+        <div class="pin-btn-wrap">
+          <a href="//www.pinterest.com/pin/create/button/"
+             data-pin-do="buttonBookmark"
+             data-pin-url="https://stan.store/VitalRadix/p/the-vital-radix-sleep-reset-system"
+             data-pin-media="https://www.vitalradix.com/logo.png"
+             data-pin-description="The Vital Radix Sleep Reset System — a complete 7-night program to restore deep natural sleep. No pills, no gadgets, no complicated routines. $24.99 at vitalradix.com">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Save
+          </a>
+        </div>
         <div class="product-flag">Most Complete</div>
         <span class="product-label">The Full System</span>
         <h3 class="product-name">The Vital Radix Sleep Reset System</h3>
@@ -441,7 +485,6 @@
           <li>When to have your last coffee, dim your lights, and wind down — all mapped out</li>
           <li>Calming practices to quiet your mind and body before bed</li>
           <li>How to time natural sleepiness without relying on melatonin pills</li>
-          <!-- CHANGE 3: Added worksheets to product list -->
           <li>Morning Light Planning Worksheet — fillable planning guide</li>
           <li>7-Night Reset Tracker — structured nightly accountability</li>
           <li>Instant digital download · Read on any device</li>
@@ -452,7 +495,6 @@
         </div>
         <a href="https://stan.store/VitalRadix/p/the-vital-radix-sleep-reset-system" target="_blank" rel="noopener" class="btn-purchase">Get the Sleep Reset System</a>
         <div class="product-meta">
-          <!-- CHANGE 3b: Updated meta tag from "PDF Download" to "PDF + Worksheets" -->
           <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>PDF + Worksheets</span>
           <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>No supplements</span>
           <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>Science-backed</span>
@@ -463,14 +505,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     CAPTURE — CHANGE 1 & 2:
-     Replaced email form with Stan Store CTA button.
-     Eyebrow updated "Free Resource" → "Free Download".
-     Sub-copy updated to describe the one-pager accurately.
-     Capture note updated — no email/spam language.
-     No JS required.
-══════════════════════════════ -->
 <section id="capture">
   <div class="capture-inner">
     <div class="reveal">
@@ -530,7 +564,6 @@
         Begin Your Reset
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <!-- CHANGE 4: href updated from "#capture" to Stan Store free product URL -->
       <a href="https://stan.store/VitalRadix/p/the-three-anchors-free-guide" target="_blank" rel="noopener" class="btn-hero-primary">Start with The Three Anchors — Free</a>
     </div>
   </div>
@@ -548,6 +581,8 @@
           <a href="https://www.tiktok.com/@vitalradix" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16.7 5.3c1.1 1.2 2.5 1.9 4 2v4.1c-1.5 0-3-.4-4.3-1.1v6.5c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v4.2c-.4-.1-.8-.2-1.2-.2-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2V2h4.1c.1 1.2.5 2.3 1.2 3.3z"/></svg></a>
           <a href="https://www.instagram.com/vitalradix" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/></svg></a>
           <a href="https://www.youtube.com/@VitalRadix" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.4 2.8 12 2.8 12 2.8s-4.4 0-6.8.2c-.6 0-1.9 0-3 1.2C1.3 5 1 7 1 7S.7 9.3.7 11.5v2.1c0 2.2.3 4.4.3 4.4s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.3 22.2 12 22.2 12 22.2s4.4 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.2.3-4.4v-2.1C23.3 9.3 23 7 23 7zM9.7 15.5V8.3l8.1 3.6-8.1 3.6z"/></svg></a>
+          <!-- Pinterest social link added to footer -->
+          <a href="https://www.pinterest.com/VitalRadix" aria-label="Pinterest" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
           <a href="mailto:hello@vitalradix.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         </div>
       </div>
@@ -640,9 +675,6 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // CHANGE 5: handleCapture() and email keydown listener removed.
-  // Email capture is now handled via Stan Store subscribe product — no JS required.
 </script>
 </body>
 </html>
