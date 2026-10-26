@@ -28,7 +28,7 @@ Static marketing site for Vital Radix (sleep / circadian rhythm brand), hosted o
 ## Business facts (keep consistent site-wide)
 - Sleep Reset book: $15.99
 - Foundation Reset Quick Guide: $2.99
-- Store: https://stan.store/VitalRadix
+- Store: https://vitalradix.gumroad.com
 - When a price changes, search the whole repo for the old price and update every occurrence (text, meta tags, structured data).
 
 ## Brand
